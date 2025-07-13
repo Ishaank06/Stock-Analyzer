@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Span Analyzer - Professional Trading Analytics</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23198754'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" data-aos="fade-right">
+                <i class="fas fa-chart-line me-2 text-success"></i>
+                Stock Span Analyzer
+            </a>
+            <button id="themeToggle" class="btn btn-outline-light btn-sm ms-auto" data-aos="fade-left">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-vh-100 d-flex align-items-center position-relative">
+        <div class="container text-center text-white">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-2 fw-bold mb-4" data-aos="fade-up" data-aos-delay="100">
+                        Professional Stock 
+                        <span class="text-gradient">Span Analysis</span>
+                    </h1>
+                    <p class="lead mb-5" data-aos="fade-up" data-aos-delay="200">
+                        Advanced algorithm to calculate stock span with real-time visualization. 
+                        Input your stock prices and get instant professional analytics with beautiful charts.
+                    </p>
+                    <div class="hero-stats mb-5" data-aos="fade-up" data-aos-delay="300">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="stat-item">
+                                    <h3 class="text-success">O(n)</h3>
+                                    <p class="text-muted">Time Complexity</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-item">
+                                    <h3 class="text-info">Real-time</h3>
+                                    <p class="text-muted">Analysis</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-item">
+                                    <h3 class="text-warning">Interactive</h3>
+                                    <p class="text-muted">Charts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-lg px-5 py-3 rounded-pill" data-aos="zoom-in" data-aos-delay="400" onclick="scrollToAnalyzer()">
+                        <i class="fas fa-rocket me-2"></i>
+                        Try It Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="800">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Analyzer Section -->
+    <section id="analyzer" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5" data-aos="fade-up">
+                        <h2 class="display-5 fw-bold mb-3">Stock Span Calculator</h2>
+                        <p class="lead text-muted">Enter your daily stock prices to calculate the span for each trading day</p>
+                    </div>
+
+                    <!-- Input Form -->
+                    <div class="card glass-card mb-5" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-body p-4">
+                            <form id="stockForm">
+                                <div class="mb-4">
+                                    <label for="prices" class="form-label fw-semibold">
+                                        <i class="fas fa-dollar-sign me-2 text-success"></i>
+                                        Stock Prices (comma-separated)
+                                    </label>
+                                    <textarea 
+                                        id="prices" 
+                                        name="prices" 
+                                        class="form-control form-control-lg" 
+                                        rows="3" 
+                                        placeholder="Example: 100, 80, 60, 70, 60, 75, 85"
+                                        required
+                                    ></textarea>
+                                    <div class="form-text">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        Enter prices separated by commas (e.g., 100, 80, 60, 70)
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-success btn-lg" id="computeBtn">
+                                        <span class="btn-text">
+                                            <i class="fas fa-calculator me-2"></i>
+                                            Compute Stock Spans
+                                        </span>
+                                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sample Data Button -->
+                    <div class="text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <button type="button" class="btn btn-outline-info" id="loadSampleBtn">
+                            <i class="fas fa-flask me-2"></i>
+                            Load Sample Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-5 d-none">
+        <div class="container">
+            <div class="row">
+                <!-- Results Table -->
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="card glass-card h-100">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="card-title mb-0">
+                                <i class="fas fa-table me-2 text-primary"></i>
+                                Analysis Results
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="resultsTable">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Price ($)</th>
+                                            <th>Span</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart -->
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="card glass-card h-100">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="card-title mb-0">
+                                <i class="fas fa-chart-bar me-2 text-warning"></i>
+                                Visual Analysis
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="stockChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Summary -->
+            <div class="row mt-4">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card glass-card">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="card-title mb-0">
+                                <i class="fas fa-analytics me-2 text-info"></i>
+                                Key Insights
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="summaryStats">
+                                <!-- Dynamic content will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Algorithm Explanation -->
+    <section id="explanation" class="py-5 bg-dark-subtle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5" data-aos="fade-up">
+                        <h2 class="display-6 fw-bold mb-3">How Stock Span Works</h2>
+                        <p class="lead">Understanding the algorithm behind the analysis</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4" data-aos="fade-right">
+                            <div class="card glass-card h-100">
+                                <div class="card-body">
+                                    <div class="icon-wrapper mb-3">
+                                        <i class="fas fa-brain fa-2x text-primary"></i>
+                                    </div>
+                                    <h4>Algorithm Logic</h4>
+                                    <p class="text-muted">
+                                        For each day, the stock span is the maximum number of consecutive days 
+                                        (ending at the current day) for which the price was less than or equal 
+                                        to the current day's price.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4" data-aos="fade-left">
+                            <div class="card glass-card h-100">
+                                <div class="card-body">
+                                    <div class="icon-wrapper mb-3">
+                                        <i class="fas fa-tachometer-alt fa-2x text-success"></i>
+                                    </div>
+                                    <h4>Efficiency</h4>
+                                    <p class="text-muted">
+                                        Uses an optimized stack-based approach achieving O(n) time complexity, 
+                                        making it suitable for large datasets and real-time analysis.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0 text-muted">
+                        © 2025 Stock Span Analyzer. Built with 
+                        <i class="fas fa-heart text-danger"></i> 
+                        for financial analytics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
