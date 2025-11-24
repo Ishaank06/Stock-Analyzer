@@ -2,7 +2,8 @@
 
 An interactive, browser-based web app to visualize and analyze the **stock span problem** with real-time charting, sleek UI, dark/light mode toggle, and animated backgrounds — all wrapped in a modern, responsive glassmorphic design.
 
-![Chart Preview](stocks.jpg)
+![Uploading image.png…]()
+
 
 ---
 
