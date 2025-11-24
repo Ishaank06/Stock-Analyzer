@@ -1,29 +1,46 @@
-# Stock-Analyzer
-An interactive web app that visualizes Stock Span analysis using JavaScript and stacks. Built with HTML, CSS, and JS to demonstrate financial data interpretation in a visual and user-friendly way.
-# StockSpanAnalyzerPro
+# 📈 Stock Span Analyzer
 
-A responsive web application to calculate and visualize the **Stock Span Problem** using JavaScript and Stack Data Structure.
+An interactive, browser-based web app to visualize and analyze the **stock span problem** with real-time charting, sleek UI, dark/light mode toggle, and animated backgrounds — all wrapped in a modern, responsive glassmorphic design.
+
+![Chart Preview](stocks.jpg)
+
+---
 
 ## 🚀 Features
-- Input daily stock prices
-- Visualizes each day’s span
-- Clean and responsive UI
-- Built with HTML, CSS, JavaScript
-- Great for learning DSA in the browser
 
-## 📊 What is Stock Span?
-The Stock Span Problem is a financial problem where we calculate how many consecutive days before the current day had a price less than or equal to today’s price.
+- **Stock Span Calculator**  
+  Enter a list of daily stock prices and get span values instantly using an efficient O(n) stack-based algorithm.
 
+- **Real-Time Chart Visualization**  
+  - Line chart for stock prices  
+  - Bar chart for corresponding span values  
+  - Built using [Chart.js](https://www.chartjs.org/)
 
+- **Modern, Responsive UI**  
+  - **Particles.js** animated background (with fallback for older browsers)  
+  - **Glassmorphism** cards with summary stats  
+  - Mobile-friendly layout
 
-## 🛠️ How to Run
-1. Clone the repository or download the ZIP
-2. Open `index.html` in your browser
-3. Enter prices and click "Analyze"
+- **Dark & Light Mode Toggle**  
+  - Accessible from the UI  
+  - Remembers your theme preference across sessions
 
-## 📁 Tech Stack
-- HTML5
-- CSS3
-- JavaScript 
+- **Sample Data & Loading Effects**  
+  Try with classic input like: `100, 80, 60, 70, 60, 75, 85`  
+  Includes loading animation and default test case
 
+---
 
+## 🔗 Live Preview
+
+Want to see it in action?  
+**[👉 View the Live App](#)** (https://addythedeveloper.github.io/stock-span-analyzer-visual/)
+
+---
+
+## ⚡ Getting Started
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/your-username/stock-span-analyzer-visual.git
+   cd stock-span-analyzer-visual
